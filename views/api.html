@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1>{{ title }}</h1>
+
+    <br />
+
+    <form method="post" action="/api/superheroes" class="form-inline">
+      <div class="form-group">
+        <label>Superhero Name</label>
+        <input type="text" name="name" class="form-control" required />
+        <label>Superpower</label>
+        <select name="power" class="form-control">
+          <option value="flight">Flight</option>
+          <option value="invisibility">Invisibility</option>
+          <option value="invulnerability">Invulnerability</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-defaul">Save</button>
+    </form>
+
+    <br /><hr />
+
+    <h1>All Superheroes</h1>
+
+    <br /><hr />
+
+    {% for superhero in superheroes %}
+      <li><a href="superhero/{{superhero.id}}">{{ superhero.name }}: {{superhero.superpower}}</a></li>
+    {% endfor %}
+
+  </div>
+
+{% endblock %}
